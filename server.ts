@@ -1,8 +1,42 @@
+// 代理目标配置
+const PROXY_CONFIG = {
+  '/proxy/tuwien': 'https://users.cg.tuwien.ac.at',
+}
+
 const server = Bun.serve({
   port: 3000,
   async fetch(req) {
     const url = new URL(req.url)
     let pathname = url.pathname
+
+    // 检查是否为代理请求
+    for (const [prefix, target] of Object.entries(PROXY_CONFIG)) {
+      if (pathname.startsWith(prefix)) {
+        const targetPath = pathname.slice(prefix.length)
+        const targetUrl = target + targetPath
+
+        try {
+          const proxyReq = await fetch(targetUrl, {
+            method: req.method,
+            headers: {
+              'User-Agent': 'Potree-Next-Proxy/1.0',
+            },
+          })
+
+          return new Response(proxyReq.body, {
+            status: proxyReq.status,
+            headers: {
+              'Content-Type': proxyReq.headers.get('Content-Type') || 'application/octet-stream',
+              'Access-Control-Allow-Origin': '*',
+            },
+          })
+        } catch (error) {
+          const message = error instanceof Error ? error.message : 'Unknown error'
+          console.error(`server.ts.fetch: Proxy error for ${targetUrl}: ${message}`)
+          return new Response(`Proxy Error: ${message}`, { status: 502 })
+        }
+      }
+    }
 
     // 默认页面
     if (pathname === '/') {
