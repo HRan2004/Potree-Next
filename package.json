@@ -1,0 +1,11 @@
+{
+  "name": "potree-next",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot server.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

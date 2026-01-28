@@ -1,3 +1,7 @@
+.idea
+node_modules
+resources
+
 pointclouds/test/
 nocommit/
 temp/

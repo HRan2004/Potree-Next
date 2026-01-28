@@ -105,18 +105,19 @@
 
 
 
-	// let splats2 = await GSLoader.load("./resources/models/gardentable.ply");
+	// let splats2 = await GSLoader.load("./resources/gardentable.ply");
 	let splats2 = await GSLoader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/gardentable.ply");
 	// let splats2 = await GSLoader.load("./resources/models/garden.ply");
+	// let splats2 = await GSLoader.load("./resources/bridge/bridge-demo.ply");
 	scene.root.children.push(splats2);
 
-	Potree3Loader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/eclepens.potree").then(pointcloud => {
-		pointcloud.scale.set(0.005, 0.005, 0.005);
-		pointcloud.position.set(-2, -2, 1);
-		pointcloud.name = "Eclepens";
-
-		scene.root.children.push(pointcloud);
-	});
+	// Potree3Loader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/eclepens.potree").then(pointcloud => {
+	// 	pointcloud.scale.set(0.005, 0.005, 0.005);
+	// 	pointcloud.position.set(-2, -2, 1);
+	// 	pointcloud.name = "Eclepens";
+	//
+	// 	scene.root.children.push(pointcloud);
+	// });
 
 
 
