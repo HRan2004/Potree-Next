@@ -96,7 +96,7 @@ export class PointCloudMaterial{
 
 	registerMapping(mapping){
 
-		// debugger;
+		// 
 
 		let index = 128 + this.mappings.length;
 		// let mapping = {name, condition, inputs, wgsl, index};
@@ -169,7 +169,7 @@ export class PointCloudMaterial{
 
 	init(pointcloud){
 
-		// debugger;
+		// 
 
 		if(this.initialized){
 			return;

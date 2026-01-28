@@ -180,7 +180,7 @@ async function load(event){
 	if(name === "r")
 	{ // compute stats
 
-		// debugger;
+		// 
 
 		let outView = new DataView(outBuffer);
 
@@ -289,7 +289,7 @@ async function load(event){
 
 onmessage = async function (event) {
 
-	// debugger;
+	// 
 
 	try{
 		let loaded = await load(event);

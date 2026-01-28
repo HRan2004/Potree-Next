@@ -55,7 +55,7 @@ async function load(event){
 	let targetBuffer = new ArrayBuffer(alignedSize);
 	let targetView = new DataView(targetBuffer);
 
-	// debugger;
+	// 
 
 	let byteOffset = 0;
 	for (let pointAttribute of pointAttributes.attributes) {
@@ -81,7 +81,7 @@ async function load(event){
 		}else{
 
 			// if(pointAttribute.name === "rgba"){
-			// 	debugger;
+			// 	
 			// }
 
 			for (let j = 0; j < numPoints; j++) {

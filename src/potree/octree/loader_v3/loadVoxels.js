@@ -37,7 +37,7 @@ function loadBC(source, target, numVoxels){
 		let bits = source.getUint16(bytesPerBlock * blockIndex + 6, true);
 
 		// if(blockIndex === 0){
-		// 	debugger;
+		// 	
 		// }
 
 		for(let sampleIndex = 0; sampleIndex < blocksize; sampleIndex++){
@@ -95,7 +95,7 @@ export function loadVoxels(octree, node, source, parentVoxelCoords){
 
 	// if(node.name === "r444"){
 	// }
-	// debugger;
+	// 
 
 	if(node.name === "r"){
 		// root node encodes voxel coordinates directly
@@ -137,7 +137,7 @@ export function loadVoxels(octree, node, source, parentVoxelCoords){
 
 		// now parent_i points to first parent voxel inside current node
 		// next, use child masks to break parent voxels into current node's voxels
-		// debugger;
+		// 
 		let numGeneratedVoxels = 0;
 		let i = 0;
 		while(numGeneratedVoxels < numVoxels){
@@ -172,7 +172,7 @@ export function loadVoxels(octree, node, source, parentVoxelCoords){
 					// let z = nodeSize[2] * ((iz + 0.5) / gridSize) + node.min[2];
 
 					// if(12 * numGeneratedVoxels + 8 > target_coordinates.byteLength){
-					// 	debugger;
+					// 	
 					// }
 					// target_coordinates.setFloat32(12 * numGeneratedVoxels + 0, x, true);
 					// target_coordinates.setFloat32(12 * numGeneratedVoxels + 4, y, true);

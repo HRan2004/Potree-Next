@@ -125,7 +125,7 @@ export class TDTilesLoader{
 
 			node.contentLoaded = true;
 			this.parseTiles(node, json.root, url);
-			// debugger;
+			// 
 			node.isLoading = false;
 			
 		}else if(isBatched){
@@ -197,7 +197,7 @@ export class TDTilesLoader{
 		loader.parseTiles(tiles.root, json.root, url);
 
 		tiles.boundingBox.copy(tiles.root.boundingVolume.toBox());
-		// debugger;
+		// 
 
 		return tiles;
 	}

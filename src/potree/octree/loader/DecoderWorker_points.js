@@ -39,7 +39,7 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 
 
 
-	// debugger;
+	// 
 
 	// LOAD JPEG ENCODED COLORS
 	// let imageData;
@@ -110,13 +110,13 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 			// 	return value;
 			// };
 
-			// debugger;
+			// 
 
 			// view_target.setUint16(offset_rgb + 6 * i + 0, decode(view_colBuffer.getUint8(3 * i + 0)), true);
 			// view_target.setUint16(offset_rgb + 6 * i + 2, decode(view_colBuffer.getUint8(3 * i + 1)), true);
 			// view_target.setUint16(offset_rgb + 6 * i + 4, decode(view_colBuffer.getUint8(3 * i + 2)), true);
 			// 376968
-			// debugger;
+			// 
 			view_target.setUint16(offset_rgb + 6 * i + 0, view_colBuffer.getUint8(3 * i + 0), true);
 			view_target.setUint16(offset_rgb + 6 * i + 2, view_colBuffer.getUint8(3 * i + 1), true);
 			view_target.setUint16(offset_rgb + 6 * i + 4, view_colBuffer.getUint8(3 * i + 2), true);
@@ -150,8 +150,8 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 		// 	let z = view_parent.getFloat32(12 * i + 8, true);
 
 		// 	// PROTOTYPING
-		// 	// debugger;
-		// 	// if(offset_rgb + 6 * i + 4 + 2 >= view_parent.byteLength) debugger;
+		// 	// 
+		// 	// if(offset_rgb + 6 * i + 4 + 2 >= view_parent.byteLength) 
 		// 	let r = view_parent.getUint16(12 * parent.numVoxels + 6 * i + 0, true);
 		// 	let g = view_parent.getUint16(12 * parent.numVoxels + 6 * i + 2, true);
 		// 	let b = view_parent.getUint16(12 * parent.numVoxels + 6 * i + 4, true);
@@ -167,10 +167,10 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 		// 	let childIndex = (vx << 2) | (vy << 1) | (vz << 0);
 
 		// 	if(childIndex < 0 || childIndex > 7){
-		// 		debugger;
+		// 		
 		// 	}
 
-		// 	// debugger;
+		// 	// 
 		// 	// console.log(childIndex);
 		// 	if(childIndex !== prevChildIndex){
 		// 		console.log(childIndex);
@@ -178,14 +178,14 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 		// 	}
 
 		// 	let voxel = {x, y, z, r, g, b, i};
-		// 	// debugger;
+		// 	// 
 
 		// 	// if(childIndex === nodeIndex){
 		// 		parentVoxels[childIndex].push(voxel);
 		// 	// }
 		// }
 
-		// debugger;
+		// 
 
 		let prefixsum = [0];
 		for(let i = 0; i < 8; i++){
@@ -195,16 +195,16 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 		let childVoxels = [];
 
 		// if(parent.numVoxelsPerOctant[nodeIndex] !== parentVoxels[nodeIndex].length){
-		// 	debugger;
+		// 	
 		// }
 
 		// if(node.name === "r00"){
-		// 	debugger;
+		// 	
 		// }
 		
 		for(let i = 0; i < parent.numVoxelsPerOctant[nodeIndex]; i++){
 			// let parentVoxel = parentVoxels[nodeIndex][i];
-			// debugger;
+			// 
 
 			// if(childVoxels.length >= node.numVoxels) break;
 
@@ -215,7 +215,7 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 			let parent_z = view_parent.getFloat32(12 * (i + poffset) + 8, true);
 
 			// if(parent_x !== parentVoxel.x){
-			// 	// debugger;
+			// 	// 
 			// 	console.error("parent_x !== parentVoxel.x");
 			// 	return;
 			// }
@@ -251,7 +251,7 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 					childCoordOffset.y = childCoordOffset.y * nodeSpacing * 0.5;
 					childCoordOffset.z = childCoordOffset.z * nodeSpacing * 0.5;
 
-					// debugger;
+					// 
 					let childCoord = {
 						x: (parent_x + childCoordOffset.x),
 						y: (parent_y + childCoordOffset.y),
@@ -304,14 +304,14 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 
 		if(childVoxels.length !== node.numVoxels){
 			console.assert(`reproduced wrong amount of voxels. expected: ${node.numVoxels}, got: ${childVoxels.length}`);
-			debugger;
+			
 		}
 
 		for(let i = 0; i < childVoxels.length; i++){
 			let childVoxel = childVoxels[i];
 
 			if(childVoxel.x == 0 && childVoxel.y == 0 && childVoxel.z == 0){
-				debugger;
+				
 			}
 
 			view_target.setFloat32(offset_xyz + 12 * i + 0, childVoxel.x, true);
@@ -345,7 +345,7 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 			// };
 
 			// if(node.name === "r0"){
-			// 	debugger;
+			// 	
 			// }
 
 			// view_target.setUint16(offset_rgb + 6 * i + 0, childVoxel.parent.r + decode(view_colBuffer.getUint8(3 * i + 0)));

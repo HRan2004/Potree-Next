@@ -251,7 +251,7 @@ export class Images360 extends SceneNode{
 		let radius_end = 0;
 		let pivot_end = image.position.clone().add(this.position);
 
-		// debugger;
+		// 
 
 		this.stationaryControls.set({
 			radius: controls.radius,

@@ -284,10 +284,10 @@ export class PotreeLoader{
 			let nodeMin = node.boundingBox.min.toArray(); 
 			let nodeMax = node.boundingBox.max.toArray();
 
-			// debugger;
+			// 
 
 			// if(numPoints === 0){
-			// 	debugger;
+			// 	
 			// }
 
 			let message = {
@@ -298,7 +298,7 @@ export class PotreeLoader{
 			worker.postMessage(message, []);
 			
 		}catch(e){
-			debugger;
+			
 			node.loaded = false;
 			node.loading = false;
 			nodesLoading--;

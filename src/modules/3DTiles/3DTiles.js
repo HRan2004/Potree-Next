@@ -597,7 +597,7 @@ export class TDTiles extends SceneNode{
 						return true;
 					}else{
 						// shouldnt happen?
-						debugger;
+						
 					}
 				}
 			}else{

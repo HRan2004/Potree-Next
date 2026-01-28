@@ -13,7 +13,7 @@ function loadNode(octree, node, dataview){
 	if(node.numVoxels > 0){
 		return loadVoxels(octree, node, dataview, parentVoxelCoords);
 	}else if(node.numPoints > 0){
-		// debugger;
+		// 
 		return loadPointsBrotli(octree, node, dataview);
 	}
 
@@ -73,7 +73,7 @@ async function loadNodes(event){
 	parentVoxelCoords = event.data.parentVoxelCoords;
 
 	for(let node of nodes){
-		// debugger;
+		// 
 		let dataview = new DataView(buffer, 
 			node.byteOffset - chunkOffset + event.data.metadata.pointBuffer.offset, 
 			node.byteSize);

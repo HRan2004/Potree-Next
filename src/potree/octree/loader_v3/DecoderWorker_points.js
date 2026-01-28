@@ -72,7 +72,7 @@ async function loadNode(event){
 		let r = R < 256 ? R : R / 256;
 		let g = G < 256 ? G : G / 256;
 		let b = B < 256 ? B : B / 256;
-		// debugger;
+		// 
 
 		targetView.setFloat32(t_offset_xyz + 12 * i + 0, x, true);
 		targetView.setFloat32(t_offset_xyz + 12 * i + 4, y, true);

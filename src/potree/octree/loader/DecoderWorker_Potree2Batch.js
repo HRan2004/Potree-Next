@@ -61,7 +61,7 @@ async function loadNode(node, nodeSpacing, parent, buffer){
 
 
 
-	// debugger;
+	// 
 
 	// LOAD JPEG ENCODED COLORS
 	// let imageData;

@@ -305,7 +305,7 @@ function endPass(pass){
 		let {resultBuffer} = renderer.timestamps;
 
 		if(resultBuffer.mapState === "mapped"){
-			debugger;
+			
 		}
 		
 		let byteOffset = 256 * timestampEntry.startIndex / 2;

@@ -97,12 +97,12 @@
 
 	// * Awaiting the loaders is done to guarantee the order in which they appear in the GUI. It is not essential, though.
 
-	await TDTilesLoader.load("https://sitn.ne.ch/3dtiles/le_locle_est/LeLocle_objmCesium3DTiles.json").then(tiles => {
-		tiles.name = "le_locle_est";
-		tiles.projector = proj4("EPSG:4978", target_crs);
-
-		scene.root.children.push(tiles);
-	});
+	// await TDTilesLoader.load("https://sitn.ne.ch/3dtiles/le_locle_est/LeLocle_objmCesium3DTiles.json").then(tiles => {
+	// 	tiles.name = "le_locle_est";
+	// 	tiles.projector = proj4("EPSG:4978", target_crs);
+	//
+	// 	scene.root.children.push(tiles);
+	// });
 	
 	await PotreeLoader.load("https://sitn.ne.ch/lidar/pointclouds/aerial/2022/lidar2022/metadata.json").then(pointcloud => {
 		scene.root.children.push(pointcloud);

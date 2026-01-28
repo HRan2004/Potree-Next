@@ -229,7 +229,7 @@ export class GaussianSplats extends SceneNode{
 			f32.set(world.elements, 16);
 			f32.set(view.elements, 32);
 			f32.set(camera.proj.elements, 48);
-			// debugger;
+			// 
 		}
 
 		{ // misc

@@ -125,7 +125,7 @@ export class Potree3Loader{
 
 			if(!current){
 				console.log(nodes);
-				debugger;
+				
 			}
 
 			let type                  = view.getUint8(i * bytesPerNode + 0);
@@ -251,7 +251,7 @@ export class Potree3Loader{
 		chunkOffset = chunkOffset + this.metadata.pointBuffer.offset;
 
 		if(chunkSize === 0 || chunkSize > 20_000_000){
-			debugger;
+			
 		}
 
 		numActiveRequests++;
@@ -400,7 +400,7 @@ export class Potree3Loader{
 			for(let node of nodes){
 
 				if(node.numElements === 0){
-					debugger;
+					
 				}
 
 				let msg_node = {
@@ -440,7 +440,7 @@ export class Potree3Loader{
 			worker.postMessage(message, transferables.buffer);
 			
 		}catch(e){
-			debugger;
+			
 			node.loaded = false;
 			node.loading = false;
 
