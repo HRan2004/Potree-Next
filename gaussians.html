@@ -34,6 +34,7 @@
 
 <script type="module">
 
+
 	import {Potree} from "potree";
 	import {Vector3, Mesh, Geometry, geometries, Points, PointLight} from "potree";
 	import {WireframeMaterial, TriangleColorMaterial} from "potree";
@@ -51,14 +52,14 @@
 	let elPotree = document.getElementById("potree");
 	let potree = await Potree.init(canvas);
 	let {scene, controls} = potree;
-	
+
 	installToolbar(potree.renderer.canvas, potree);
 
 	installSidebar(elPotree, potree).then(sidebar => {
 		window.sidebar = sidebar;
 		let panelAttributes = sidebar.sections.find(section => section.handler.name === "Attributes").handler;
 		let pointcloud = scene.root.children.find(c => c.constructor.name === "PointCloudOctree");
-		
+
 		if(panelAttributes && pointcloud){
 			panelAttributes.set(pointcloud);
 		}
@@ -72,7 +73,7 @@
 
 	// default, if not overriden later on
 	controls.set({
-		position: [2.2, 3.4, 5.3], 
+		position: [2.2, 3.4, 5.3],
 		pivot:    [-0.2, -0.1, 1.3]
 	});
 
@@ -106,18 +107,20 @@
 
 
 	let splats2 = await GSLoader.load("./resources/gardentable.ply");
-	// let splats2 = await GSLoader.load("/proxy/tuwien/mschuetz/permanent/potree-next/resources/gardentable.ply");
+	// let splats2 = await GSLoader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/gardentable.ply");
 	// let splats2 = await GSLoader.load("./resources/models/garden.ply");
-	// let splats2 = await GSLoader.load("./resources/bridge/bridge-demo.ply");
 	scene.root.children.push(splats2);
 
-	// Potree3Loader.load("/proxy/tuwien/mschuetz/permanent/potree-next/resources/eclepens.potree").then(pointcloud => {
-	// 	pointcloud.scale.set(0.005, 0.005, 0.005);
-	// 	pointcloud.position.set(-2, -2, 1);
-	// 	pointcloud.name = "Eclepens";
-	//
-	// 	scene.root.children.push(pointcloud);
-	// });
+	Potree3Loader.load("./resources/eclepens.potree").then(pointcloud => {
+		pointcloud.scale.set(0.005, 0.005, 0.005);
+		pointcloud.position.set(-2, -2, 1);
+		pointcloud.name = "Eclepens";
+
+		scene.root.children.push(pointcloud);
+	});
+
+
+
 
 
 
