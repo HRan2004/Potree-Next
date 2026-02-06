@@ -1,6 +1,6 @@
 // 代理目标配置
 const PROXY_CONFIG = {
-  '/proxy/tuwien': 'https://users.cg.tuwien.ac.at',
+  // '/proxy/tuwien': 'https://users.cg.tuwien.ac.at',
 }
 
 const server = Bun.serve({
