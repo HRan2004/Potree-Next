@@ -117,4 +117,6 @@ resources/pointclouds/wien_innenstadt/octree.bin
 
 converter
 resources/eclepens.potree
-resources/eclepens.potree
+
+.idea/
+.vscode/
