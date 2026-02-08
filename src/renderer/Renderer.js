@@ -146,8 +146,8 @@ export class Renderer{
 		this.device = await this.adapter.requestDevice({
 			requiredFeatures: requiredFeatures,
 			requiredLimits: {
-				maxStorageBufferBindingSize: 1_073_741_824,
-				maxBufferSize: 1_073_741_824,
+				maxStorageBufferBindingSize: 2_147_483_644,
+				maxBufferSize: 2_147_483_644,
 				// maxBindGroups: 16,
 			}
 		});

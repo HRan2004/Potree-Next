@@ -114,3 +114,7 @@ resources/pointclouds/wien_innenstadt/hierarchy.bin
 resources/pointclouds/wien_innenstadt/log.txt
 resources/pointclouds/wien_innenstadt/metadata.json
 resources/pointclouds/wien_innenstadt/octree.bin
+
+converter
+resources/eclepens.potree
+resources/eclepens.potree

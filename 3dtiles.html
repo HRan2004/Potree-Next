@@ -97,29 +97,11 @@
 
 	// * Awaiting the loaders is done to guarantee the order in which they appear in the GUI. It is not essential, though.
 
-	// await TDTilesLoader.load("https://sitn.ne.ch/3dtiles/le_locle_est/LeLocle_objmCesium3DTiles.json").then(tiles => {
-	// 	tiles.name = "le_locle_est";
-	// 	tiles.projector = proj4("EPSG:4978", target_crs);
-	//
-	// 	scene.root.children.push(tiles);
-	// });
-	
-	await PotreeLoader.load("https://sitn.ne.ch/lidar/pointclouds/aerial/2022/lidar2022/metadata.json").then(pointcloud => {
-		scene.root.children.push(pointcloud);
-		pointcloud.name = "SITN 2022";
-	});
+	await TDTilesLoader.load("https://sitn.ne.ch/3dtiles/le_locle_est/LeLocle_objmCesium3DTiles.json").then(tiles => {
+		tiles.name = "le_locle_est";
+		tiles.projector = proj4("EPSG:4978", target_crs);
 
-	let splats2 = await GSLoader.load("./resources/gardentable.ply");
-	// let splats2 = await GSLoader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/gardentable.ply");
-	// let splats2 = await GSLoader.load("./resources/models/garden.ply");
-	scene.root.children.push(splats2);
-
-	Potree3Loader.load("./resources/eclepens.potree").then(pointcloud => {
-		pointcloud.scale.set(0.005, 0.005, 0.005);
-		pointcloud.position.set(-2, -2, 1);
-		pointcloud.name = "Eclepens";
-
-		scene.root.children.push(pointcloud);
+		scene.root.children.push(tiles);
 	});
 	
 </script>
