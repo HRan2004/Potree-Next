@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cced326f-f7f6-4416-9410-60a58ccc891f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/eclepens.potree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3dtiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/3dtiles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gaussians.html" beforeDir="false" afterPath="$PROJECT_DIR$/gaussians.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vienna_city_center.html" beforeDir="false" afterPath="$PROJECT_DIR$/vienna_city_center.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="645" />
+    <option name="cachedIndexableFilesCount" value="640" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -53,7 +53,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Potree-Next/converter&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Potree-Next/resources/wien_innenstadt&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,15 +62,16 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Projects\\Potree-Next\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Software\\WebStorm 2025.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\Potree-Next\resources\wien_innenstadt" />
+      <recent name="C:\Projects\Potree-Next" />
       <recent name="C:\Projects\Potree-Next\converter" />
       <recent name="C:\Projects\Potree-Next\resources" />
-      <recent name="C:\Projects\Potree-Next" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\Potree-Next\resources" />
@@ -123,6 +124,7 @@
       <workItem from="1770404283433" duration="8562000" />
       <workItem from="1770463990313" duration="759000" />
       <workItem from="1770588040557" duration="110000" />
+      <workItem from="1770591276728" duration="438000" />
     </task>
     <servers />
   </component>
