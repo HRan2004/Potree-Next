@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cced326f-f7f6-4416-9410-60a58ccc891f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bridge.html" beforeDir="false" afterPath="$PROJECT_DIR$/bridge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Potree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Potree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vienna_city_center.html" beforeDir="false" afterPath="$PROJECT_DIR$/vienna_city_center.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/octree.wgsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/octree.wgsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/renderPointsOctree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/renderPointsOctree.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <workItem from="1770404283433" duration="8562000" />
       <workItem from="1770463990313" duration="759000" />
       <workItem from="1770588040557" duration="110000" />
-      <workItem from="1770591276728" duration="3610000" />
+      <workItem from="1770591276728" duration="4917000" />
     </task>
     <servers />
   </component>

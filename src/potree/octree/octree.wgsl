@@ -266,8 +266,8 @@ fn toQuadPos(vertexID : u32, viewPos : vec4<f32>, node : Node) -> vec4<f32>{
 	// QUAD
 	var localIndex = vertexID % 6u;
 
-	var transX = node.spacing * 0.690f;
-	var transY = node.spacing * 0.690f;
+	var transX = node.spacing * 0.690f * uniforms.pointSize;
+	var transY = node.spacing * 0.690f * uniforms.pointSize;
 
 	var tmpViewPos = viewPos;
 
