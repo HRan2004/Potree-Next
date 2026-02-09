@@ -40,6 +40,7 @@ Potree-Next will eventually replace [Potree 1.8](https://github.com/potree/potre
 # Getting Started
 
 * Convert your point cloud with [PotreeConverter](https://github.com/potree/PotreeConverter) or [PotreeDesktop](https://github.com/potree/potreedesktop).
+  * For PLY files, see [PLY to Potree Converter](#ply-to-potree-converter) below.
 * Clone or download this repository.
 * Copy and adapt one of the examples.
 * Run it in your web browser to see the results.
@@ -49,4 +50,33 @@ Potree-Next will eventually replace [Potree 1.8](https://github.com/potree/potre
 	* Run the server from within the Potree-Next directory: <br>```http-server```
 	* Open one of the examples in your web browser, e.g.: <br>
 	  ```http://localhost:8080/extra_materials_terrasolid_sitn.html```
-* Once it works locally, you can upload the results to your file server to make it accessible online. Potree is a client-side renderer, so a simple file server without PHP, JS, etc. is sufficient. 
+* Once it works locally, you can upload the results to your file server to make it accessible online. Potree is a client-side renderer, so a simple file server without PHP, JS, etc. is sufficient.
+
+# PLY to Potree Converter
+
+PotreeConverter 2.1.1 does not support PLY format directly. The `converter/ply-to-potree.py` script handles the full conversion by first converting PLY to LAS, then using PotreeConverter to generate Potree v2.
+
+### Dependencies
+
+- Python 3.x
+- numpy (`pip install numpy`)
+- laspy (`pip install laspy`)
+
+### Usage
+
+```bash
+python converter/ply-to-potree.py <input.ply> <output_dir>
+```
+
+Example:
+
+```bash
+python converter/ply-to-potree.py ./resources/bridge/BridgeDemoFile.ply ./resources/bridge/potree
+```
+
+### Supported PLY Features
+
+- Format: `binary_little_endian` only
+- Coordinates: auto-detected (`x/y/z`)
+- Colors: auto-detected (`red/green/blue`, `r/g/b`, `diffuse_red/green/blue`), optional
+- Other custom properties (e.g. `labelCol`) are ignored
