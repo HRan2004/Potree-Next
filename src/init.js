@@ -138,7 +138,7 @@ function startPass(renderer, target, label){
 	let colorAttachments = [{
 		view, 
 		loadOp: "clear", 
-		clearValue: { r: 0.1, g: 0.2, b: 0.3, a: 1.0 },
+		clearValue: Potree.settings.clearColor,
 		storeOp: 'store',
 	}];
 

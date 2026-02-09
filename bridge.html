@@ -80,23 +80,17 @@
 	import {CopcLoader, Image360, Images360, SplatType, GaussianSplats} from "potree";
 	import {PotreeLoader, Potree3Loader, GSLoader} from "potree";
 	import {MAPPINGS} from "./src/modules/attributes/mappings.js";
-	import {PointMeasure} from "potree";
-
 	Potree.settings.edlEnabled      = true;
-	Potree.settings.dilateEnabled   = false;
+	Potree.settings.dilateEnabled   = true;
 	Potree.settings.hqsEnabled      = true;
 	Potree.settings.pointBudget     = 8_000_000;
 	Potree.settings.attribute       = "rgba";
-	Potree.settings.splatType       = SplatType.QUADS;
 	Potree.settings.splatType       = SplatType.POINTS;
 	Potree.settings.pointSize       = 2;
 	Potree.settings.minNodeSize     = 200;
 	Potree.settings.showBoundingBox = false;
+	Potree.settings.clearColor     = { r: 1, g: 1, b: 1, a: 1.0 };
 
-
-	let measure = new PointMeasure();
-	measure.markers.push(new Vector3(50, -250, 12));
-	potree.measure.measures.push(measure);
 
 	Potree.events.onFrameStart(() => {
 		let report = Potree.renderer.createResourceReport();
@@ -104,7 +98,7 @@
 		document.getElementById("msg_resources").innerText = report;
 	});
 
-	PotreeLoader.load("./resources/bridge/output/metadata.json").then(pointcloud => {
+	PotreeLoader.load("./resources/bridge/potree/metadata.json").then(pointcloud => {
 		pointcloud.name = "Bridge";
 
 		scene.root.children.push(pointcloud);

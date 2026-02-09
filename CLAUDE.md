@@ -1,22 +1,22 @@
 # CLAUDE.md
 
-本文件为 Claude Code (claude.ai/code) 在此仓库中工作时提供指导。
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## 构建命令
 
 ```bash
-bun run dev      # 启动开发服务器（端口 3000）
+bun run dev      # 启动开发服务器（端口 8080，基于 http-server）
 ```
 
-### 开发服务器 (`server.ts`)
+### 开发服务器
 
-项目使用 Bun 原生静态文件服务器，配合浏览器原生 Import Maps 解析模块路径。
+项目使用 `bunx http-server` 作为静态文件服务器，配合浏览器原生 Import Maps 解析模块路径。
 
-- **端口**: 3000
-- **默认页面**: `vienna_city_center.html`
+- **端口**: 8080（http-server 默认）
+- **无默认页面**: 需手动访问具体 HTML 文件
 - **模块解析**: 各 HTML 文件内置 `<script type="importmap">` 定义模块映射
 
-示例页面：`http://localhost:3000/gaussians.html`
+示例页面：`http://localhost:8080/vienna_city_center.html`
 
 ## 架构概述
 
@@ -81,13 +81,13 @@ Potree v3 中内节点用体素代替点：
 
 ### 数据加载
 
-`src/potree/octree/loader/` 中的多种加载器实现：
+| 加载器 | 路径 | 格式 | 特点 |
+|--------|------|------|------|
+| **PotreeLoader.js** | `loader/` | Potree v2 | DEFAULT/BROTLI 编码 |
+| **Potree3Loader.js** | `loader_v3/` | Potree v3 | 支持体素，REPLACING 细化 |
+| **CopcLoader.js** | `loader/` | COPC (.copc.laz) | 无需预转换，直接加载 |
 
-| 加载器 | 格式 | 特点 |
-|--------|------|------|
-| **PotreeLoader.js** | Potree v2 | DEFAULT/BROTLI 编码 |
-| **Potree3Loader.js** | Potree v3 | 支持体素，REPLACING 细化 |
-| **CopcLoader.js** | COPC (.copc.laz) | 无需预转换，直接加载 |
+均位于 `src/potree/octree/` 下。
 
 所有加载器使用：
 - HTTP Range 请求按需加载
