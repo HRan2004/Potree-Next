@@ -5,6 +5,7 @@ import {PointCloudOctree, REFINEMENT, PointCloudOctreeNode} from "potree";
 import {WorkerPool} from "potree";
 import {Geometry} from "potree";
 import {MAPPINGS} from "potree";
+import {rateLimiter} from "../rate-limiter.js";
 
 let nodesLoading = 0;
 
@@ -220,6 +221,7 @@ export class PotreeLoader{
 		if(node.loading) return;
 		if(node.loadAttempts > 5) return;
 		if(nodesLoading >= 10) return;
+		if(!rateLimiter.tryAcquire()) return;
 
 		nodesLoading++;
 		node.loading = true;

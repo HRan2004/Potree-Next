@@ -4,7 +4,7 @@ import {PointAttribute, PointAttributes, PointAttributeTypes} from "potree";
 import {WorkerPool} from "potree";
 import {Geometry} from "potree";
 import {Vector3, Box3, Matrix4} from "potree";
-
+import {rateLimiter} from "../rate-limiter.js";
 
 let nodesLoading = 0;
 
@@ -400,6 +400,8 @@ export class CopcLoader{
 		if(nodesLoading >= 6){
 			return;
 		}
+
+		if(!rateLimiter.tryAcquire()) return;
 
 		nodesLoading++;
 		node.loading = true;

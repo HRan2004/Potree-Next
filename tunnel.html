@@ -80,6 +80,7 @@
 	import {CopcLoader, Image360, Images360, SplatType, GaussianSplats} from "potree";
 	import {PotreeLoader, Potree3Loader, GSLoader} from "potree";
 	import {MAPPINGS} from "./src/modules/attributes/mappings.js";
+	import {PointMeasure} from "potree";
 	Potree.settings.edlEnabled      = true;
 	Potree.settings.dilateEnabled   = true;
 	Potree.settings.hqsEnabled      = true;
@@ -112,6 +113,42 @@
 		// bridge 原始 position (boundingBox.min): [27, 22, 6], 尺寸约 47x47x47
 		// 放在 tunnel X 方向右侧，间距 10，Y 对齐，Z 底部对齐
 		pointcloud.position.set(407100, 427221, 195);
+		pointcloud.updateWorld();
+
+		scene.root.children.push(pointcloud);
+	});
+
+	// Wien Innenstadt (来自 vienna_city_center.html)
+	// 原始 boundingBox: min [1250, 340000, -478], max [5000, 343750, 3271], 尺寸约 3750x3750x3750
+	// 加载器会将 position 设为 boundingBox.min，并将点数据归一化到 [0, size]
+	// 缩放 0.02 后点数据范围约 75m，放在 tunnel Y 方向负方向，间距 20m
+	PotreeLoader.load("./resources/wien_innenstadt/metadata.json").then(pointcloud => {
+		pointcloud.name = "Wien Innenstadt";
+
+		let material = pointcloud.material;
+		material.registerMapping(MAPPINGS.ELEVATION);
+
+		pointcloud.scale.set(0.05, 0.05, 0.05);
+		// 加载器已将点数据归一化到 [0, 3750]，缩放后变为 [0, 75]
+		// position 直接设为目标世界坐标即可
+		// 放在 tunnel Y 方向负方向: tunnel min Y = 427221, 间距 20m
+		pointcloud.position.set(407028, 427131 - 20 - 75, 175);
+		pointcloud.updateWorld();
+
+		scene.root.children.push(pointcloud);
+	});
+
+	// Eclepens (来自 gaussians.html, Potree v3 格式)
+	// 原始 boundingBox: min [-549, -465, -65], max [532, 616, 1016], 尺寸约 1082x1082x1082
+	// 加载器已将点数据归一化到 [0, size]，缩放 0.07 后约 76m
+	// 放在 tunnel X 方向正方向，间距 20m
+	Potree3Loader.load("./resources/eclepens.potree").then(pointcloud => {
+		pointcloud.name = "Eclepens";
+
+		pointcloud.scale.set(0.06, 0.06, 0.06);
+		// position 直接设为目标世界坐标
+		// 放在 tunnel X 方向正方向: tunnel max X = 407136, 间距 20m
+		pointcloud.position.set(407126, 427201, 190);
 		pointcloud.updateWorld();
 
 		scene.root.children.push(pointcloud);

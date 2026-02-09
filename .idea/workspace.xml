@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cced326f-f7f6-4416-9410-60a58ccc891f" name="Changes" comment="">
+    <list default="true" id="22f84a90-2c0b-4c9e-b006-08b4444d5c31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/keybindings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader/CopcLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader/CopcLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader/PotreeLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader/PotreeLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader_v3/Potree3Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader_v3/Potree3Loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-4.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tunnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,26 +21,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="647" />
+    <option name="cachedIndexableFilesCount" value="657" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="38sMYHbH85597NYA9nq8mYQktte" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="39RVNHAPlBCKMVZLemUrIaXqaSE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,35 +44,20 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
+    "javascript.preferred.runtime.type.id": "bun",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Projects/Potree-Next",
+    "last_opened_file_path": "C:/Projects/pointcloud-webgpu-render",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
+    "nodejs_package_manager_path": "bun",
     "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "terminal",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "D:\\Software\\WebStorm 2025.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Projects\\pointcloud-webgpu-render\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\Potree-Next" />
-      <recent name="C:\Projects\Potree-Next\resources\wien_innenstadt" />
-      <recent name="C:\Projects\Potree-Next\converter" />
-      <recent name="C:\Projects\Potree-Next\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projects\Potree-Next\resources" />
-      <recent name="C:\Projects\Potree-Next\resources\models" />
-      <recent name="C:\Projects\Potree-Next\resources\bridge" />
-      <recent name="C:\Projects\Potree-Next\resources\bridge\potree" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -102,26 +84,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cced326f-f7f6-4416-9410-60a58ccc891f" name="Changes" comment="" />
-      <created>1769583870387</created>
+      <changelist id="22f84a90-2c0b-4c9e-b006-08b4444d5c31" name="Changes" comment="" />
+      <created>1770658829228</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1769583870387</updated>
-      <workItem from="1769583871424" duration="22000000" />
-      <workItem from="1769658034753" duration="77000" />
-      <workItem from="1769784378872" duration="2483000" />
-      <workItem from="1769839130679" duration="468000" />
-      <workItem from="1769840898075" duration="84000" />
-      <workItem from="1770311095484" duration="2232000" />
-      <workItem from="1770375660759" duration="145000" />
-      <workItem from="1770376380189" duration="955000" />
-      <workItem from="1770401277543" duration="241000" />
-      <workItem from="1770401611453" duration="616000" />
-      <workItem from="1770404283433" duration="8562000" />
-      <workItem from="1770463990313" duration="759000" />
-      <workItem from="1770588040557" duration="110000" />
-      <workItem from="1770591276728" duration="3610000" />
-      <workItem from="1770630599218" duration="10714000" />
+      <updated>1770658829228</updated>
+      <workItem from="1770658830634" duration="4465000" />
     </task>
     <servers />
   </component>

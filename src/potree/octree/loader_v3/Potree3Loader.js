@@ -7,6 +7,7 @@ import {Geometry} from "potree";
 import {Vector3, Box3, Matrix4} from "potree";
 import JSON5 from "json5";
 import {MAPPINGS} from "potree";
+import {rateLimiter} from "../rate-limiter.js";
 
 let numActiveRequests = 0;
 
@@ -231,6 +232,7 @@ export class Potree3Loader{
 	async loadNodeUnfiltered(node){
 
 		if(numActiveRequests > 6) return;
+		if(!rateLimiter.tryAcquire()) return;
 		if(!node.loaded) return; // regular filtered data needs to be loaded first
 		if(node.unfilteredLoaded) return; 
 		if(node.unfilteredLoading) return;
@@ -320,6 +322,8 @@ export class Potree3Loader{
 		{
 			return;
 		}
+
+		if(!rateLimiter.tryAcquire()) return;
 
 		// when loading non-root node, check if we can load all siblings in one go
 
