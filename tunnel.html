@@ -73,8 +73,8 @@
 
 	// default, if not overriden later on
 	controls.set({
-		position: [50, 50, 80],
-		pivot:    [33, 28, 30]
+		position: [407125, 427380, 320],
+		pivot:    [407125, 427260, 200]
 	});
 
 	import {CopcLoader, Image360, Images360, SplatType, GaussianSplats} from "potree";
@@ -103,6 +103,26 @@
 
 		scene.root.children.push(pointcloud);
 	});
+
+	PotreeLoader.load("./resources/bridge/potree/metadata.json").then(pointcloud => {
+		pointcloud.name = "Bridge";
+
+		// 将 bridge 移到 tunnel 旁边
+		// tunnel boundingBox: min [407058, 427221, 195], max [407136, 427299, 273]
+		// bridge 原始 position (boundingBox.min): [27, 22, 6], 尺寸约 47x47x47
+		// 放在 tunnel X 方向右侧，间距 10，Y 对齐，Z 底部对齐
+		pointcloud.position.set(407100, 427221, 195);
+		pointcloud.updateWorld();
+
+		scene.root.children.push(pointcloud);
+	});
+
+	setTimeout(() => {
+		document.getElementById('potree_sidebar').style.display = "none";
+		document.getElementById('potree_toolbar').style.display = "none";
+		document.getElementById('msg_resources').style.display = "none";
+		document.getElementById('canvas').parentElement.style.position = "absolute";
+	}, 500)
 
 </script>
 
