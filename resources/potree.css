@@ -37,6 +37,7 @@ td{
 }
 
 #msg_resources{
+	display: none;
 	position: absolute; 
 	left: 1em; 
 	top: 10px; 

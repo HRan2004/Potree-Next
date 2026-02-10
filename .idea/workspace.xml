@@ -6,13 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="22f84a90-2c0b-4c9e-b006-08b4444d5c31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/keybindings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader/CopcLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader/CopcLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader/PotreeLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader/PotreeLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/potree/octree/loader_v3/Potree3Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/loader_v3/Potree3Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge.html" beforeDir="false" afterPath="$PROJECT_DIR$/bridge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/potree.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/potree.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Potree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Potree.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/sidebar/panel_appearance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/sidebar/panel_appearance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/sidebar/sidebar.css.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/sidebar/sidebar.css.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/toolbar/toolbar.css.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/toolbar/toolbar.css.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/octree.wgsl" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/octree.wgsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/octree/pipelineGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/octree/pipelineGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/potree/renderPointsOctree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/potree/renderPointsOctree.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tunnel.html" beforeDir="false" afterPath="$PROJECT_DIR$/tunnel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,9 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="39RVNHAPlBCKMVZLemUrIaXqaSE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,7 +45,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "full",
     "javascript.preferred.runtime.type.id": "bun",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Projects/pointcloud-webgpu-render",
@@ -89,7 +91,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1770658829228</updated>
-      <workItem from="1770658830634" duration="4465000" />
+      <workItem from="1770658830634" duration="4863000" />
+      <workItem from="1770679254403" duration="72000" />
+      <workItem from="1770758520891" duration="6967000" />
     </task>
     <servers />
   </component>

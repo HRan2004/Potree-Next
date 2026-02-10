@@ -13,7 +13,7 @@ export async function makePipeline(renderer, args = {}){
 	state.stage = "building";
 
 	let shaderPath = `${import.meta.url}/../octree.wgsl`;
-	let response = await fetch(shaderPath);
+	let response = await fetch(shaderPath, {cache: "no-cache"});
 	let shaderSource = await response.text();
 
 	let depthWrite = true;

@@ -40,10 +40,12 @@ export function createPanel(){
 
 			let [min, max] = args.range;
 
+			let step = args.step ?? 1;
+
 			let template = document.createElement('template');
 			template.innerHTML = `
 				<sidebarlabel>${args.label}</sidebarlabel>
-				<input type="range" min="${min}" max="${max}" value="${args.value}" style="width: 100%" name=${args.elementName}>
+				<input type="range" min="${min}" max="${max}" step="${step}" value="${args.value}" style="width: 100%" name=${args.elementName}>
 				<sidebarlabel name=${args.elementName}>abc M</sidebarlabel>
 			`;
 			let nodes = template.content.childNodes;
@@ -103,14 +105,15 @@ export function createPanel(){
 		});
 
 		addSlider({
-			label: "Point Size", 
+			label: "Point Size",
 			elementName: "sldPointSize",
-			range: [1, 7], 
+			range: [1, 50],
+			step: 1,
 			value: Potree.settings.pointSize,
 			onChange: (elSlider, elValue) => {
 				Potree.settings.pointSize = Number(elSlider.value);
 
-				let str = parseInt(elSlider.value) + " px";
+				let str = elSlider.value + " px";
 				elValue.innerText = str;
 			},
 		});

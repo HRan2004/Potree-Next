@@ -113,6 +113,7 @@ export const SplatType = {
 
 const settings = {
 	pointSize: 3,
+	splatScale: 0.002,
 	pointBudget: 2_000_000,
 	minNodeSize: 150,
 	attribute: "rgba",

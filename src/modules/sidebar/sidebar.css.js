@@ -8,10 +8,12 @@ tr:hover {
 
 
 #potree_sidebar{
+    display: none;
 	background: #333333;
 	color: #ffffff;
 	font-family: Calibri;
 	overflow: hidden;
+	opacity: 0;
 }
 
 #potree_sidebar_section_selection{

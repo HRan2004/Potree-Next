@@ -13,6 +13,7 @@ struct Uniforms {
 	splatType              : u32,           // 280
 	isAdditive             : u32,           // 284
 	spacing                : f32,           // 288
+	splatScale             : f32,           // 292
 	octreeMin              : vec3f,         // 304
 	octreeMax              : vec3f,         // 320
 	classificationAttIndex : i32,           // 336
@@ -210,6 +211,7 @@ struct VertexOutput {
 	@location(0) color : vec4<f32>,
 	@location(1) @interpolate(flat) point_id : u32,
 	@location(2) @interpolate(flat) point_position : vec4<f32>,
+	@location(3) quadUV : vec2<f32>,
 };
 
 fn doIgnores(){
@@ -263,43 +265,44 @@ fn readPosition(pointID : u32, node : Node) -> vec4<f32>{
 
 fn toQuadPos(vertexID : u32, viewPos : vec4<f32>, node : Node) -> vec4<f32>{
 
-	// QUAD
+	// QUAD - expand in clip space, spacing-based with pointSize scaling
 	var localIndex = vertexID % 6u;
 
-	var transX = node.spacing * 0.690f;
-	var transY = node.spacing * 0.690f;
+	var projPos = uniforms.proj * viewPos;
 
-	var tmpViewPos = viewPos;
+	// project spacing into clip space: spacing in view space -> clip offset
+	// proj[0][0] = 2*near/width, proj[1][1] = 2*near/height (perspective)
+	var halfSize = uniforms.spacing * uniforms.splatScale * uniforms.pointSize;
+	var clipX = halfSize * uniforms.proj[0][0];
+	var clipY = halfSize * uniforms.proj[1][1];
 
 	if(localIndex == 0u){
-		tmpViewPos.x = viewPos.x - transX;
-		tmpViewPos.y = viewPos.y - transY;
+		projPos.x = projPos.x - clipX;
+		projPos.y = projPos.y - clipY;
 	}else if(localIndex == 1u){
-		tmpViewPos.x = viewPos.x + transX;
-		tmpViewPos.y = viewPos.y - transY;
+		projPos.x = projPos.x + clipX;
+		projPos.y = projPos.y - clipY;
 	}else if(localIndex == 2u){
-		tmpViewPos.x = viewPos.x + transX;
-		tmpViewPos.y = viewPos.y + transY;
+		projPos.x = projPos.x + clipX;
+		projPos.y = projPos.y + clipY;
 	}else if(localIndex == 3u){
-		tmpViewPos.x = viewPos.x - transX;
-		tmpViewPos.y = viewPos.y - transY;
+		projPos.x = projPos.x - clipX;
+		projPos.y = projPos.y - clipY;
 	}else if(localIndex == 4u){
-		tmpViewPos.x = viewPos.x + transX;
-		tmpViewPos.y = viewPos.y + transY;
+		projPos.x = projPos.x + clipX;
+		projPos.y = projPos.y + clipY;
 	}else if(localIndex == 5u){
-		tmpViewPos.x = viewPos.x - transX;
-		tmpViewPos.y = viewPos.y + transY;
+		projPos.x = projPos.x - clipX;
+		projPos.y = projPos.y + clipY;
 	}
 
-	var position = uniforms.proj * tmpViewPos;
-
-	return position;
+	return projPos;
 };
 
 fn toVoxelPos(vertexID : u32, position: vec4<f32>, projPos : vec4<f32>, node : Node) -> vec4<f32>{
 	var localIndex = vertexID % 18u;
 
-	var s = node.spacing * 0.25f;
+	var s = node.spacing * 0.25f * uniforms.pointSize;
 	var o = 0.00f;
 	// s = 0.001f;
 
@@ -401,6 +404,21 @@ fn main_vertex(vertex : VertexInput) -> VertexOutput {
 		if(node.splatType == 1u){
 			// QUAD
 			projPos = toQuadPos(vertex.vertexID, viewPos, node);
+
+			var li = vertex.vertexID % 6u;
+			if(li == 0u){
+				output.quadUV = vec2<f32>(-1.0, -1.0);
+			}else if(li == 1u){
+				output.quadUV = vec2<f32>( 1.0, -1.0);
+			}else if(li == 2u){
+				output.quadUV = vec2<f32>( 1.0,  1.0);
+			}else if(li == 3u){
+				output.quadUV = vec2<f32>(-1.0, -1.0);
+			}else if(li == 4u){
+				output.quadUV = vec2<f32>( 1.0,  1.0);
+			}else if(li == 5u){
+				output.quadUV = vec2<f32>(-1.0,  1.0);
+			}
 		}else if(node.splatType == 2u){
 			// VOXEL
 
@@ -500,6 +518,7 @@ struct FragmentInput {
 	@location(0) color : vec4<f32>,
 	@location(1) @interpolate(flat) point_id : u32,
 	@location(2) @interpolate(flat) point_position : vec4<f32>,
+	@location(3) quadUV : vec2<f32>,
 	@builtin(position) frag_position : vec4<f32>,
 };
 
@@ -525,20 +544,13 @@ fn main_fragment(fragment : FragmentInput) -> FragmentOutput {
 	if(uniforms.splatType == 0u){
 		output.color = vec4<f32>(fragment.color.xyz, 1.0);
 	}else if(uniforms.splatType == 1u){
-		var d = length(uv / (uniforms.pointSize * 0.5));
-		var weight = pow(1.0 - d * d, 8.0);
-		weight = clamp(weight, 0.001, 10.0);
+		var d = length(fragment.quadUV);
 
-		// if(d > 1.0){
-		// 	weight = 0.0;
-		// 	discard;
-		// }
-		// TODO
-		weight = 0.1f;
+		if(d > 1.0){
+			discard;
+		}
 
-		var weighted = fragment.color.xyz * weight;
-
-		output.color = vec4<f32>(weighted, weight);
+		output.color = vec4<f32>(fragment.color.xyz, 1.0);
 	}else if(uniforms.splatType == 2u){
 		// TODO
 		var weight = 0.1f;

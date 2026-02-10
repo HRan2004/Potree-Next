@@ -10,7 +10,8 @@ export const css = `
 	padding: 0.3em 0.8em;
 	font-family: "system-ui";
 	border-radius: 0em 0em 0.3em 0.3em;
-	display: flex;
+	// display: flex;
+	display: none;
 	transform: scale(1.3, 1.3);
 	transform-origin: top left;
 }
