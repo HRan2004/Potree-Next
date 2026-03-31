@@ -6,15 +6,15 @@
 
 转换工具为项目 `converter/` 目录下的 PotreeConverter 2.1.1（Windows 可执行文件）。
 
-## 问题：PotreeConverter 不支持 PLY 格式
+## PotreeConverter 不支持 PLY 格式
 
-直接执行：
+如果直接执行：
 
 ```bash
 ./converter/PotreeConverter.exe ./resources/bridge/BridgeDemoFile.ply -o ./resources/bridge/potree
 ```
 
-输出 `#points: 0`，转换失败。PotreeConverter 2.1.1 无法解析 PLY 文件。
+会输出 `#points: 0`，转换失败。PotreeConverter 2.1.1 无法解析 PLY 文件。
 
 ## PLY 文件分析
 
@@ -115,6 +115,7 @@ with laspy.open(LAS_PATH, mode="w", header=header) as writer:
 ```
 
 关键细节：
+
 - **LAS point_format=2**: 包含 xyz + rgb，是最简单的带颜色格式
 - **RGB 8→16bit**: LAS 标准中 RGB 是 uint16，乘以 257（`0xFF * 257 = 0xFFFF`）实现无损扩展
 - **分批处理**: 每次 500 万点，避免内存溢出
@@ -148,11 +149,11 @@ rm resources/bridge/ply_to_las.py
 
 `resources/bridge/potree/` 目录：
 
-| 文件 | 大小 | 说明 |
-|------|------|------|
+| 文件            | 大小   | 说明                                       |
+| --------------- | ------ | ------------------------------------------ |
 | `metadata.json` | 3.4 KB | 点云元数据（坐标范围、属性定义、层级信息） |
-| `hierarchy.bin` | 633 KB | 八叉树层级结构（节点索引） |
-| `octree.bin` | 1.2 GB | 点云数据（所有 LOD 层级的点） |
+| `hierarchy.bin` | 633 KB | 八叉树层级结构（节点索引）                 |
+| `octree.bin`    | 1.2 GB | 点云数据（所有 LOD 层级的点）              |
 
 ## 加载方式
 

@@ -43,6 +43,7 @@
 	import {proj4} from "proj4";
 	import * as TWEEN from "tween";
 	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	import {startStatsLogger} from "./src/misc/stats-logger.js";
 	import {installSidebar} from "sidebar";
 
 	let canvas   = document.getElementById("canvas");
@@ -103,7 +104,9 @@
 
 		scene.root.children.push(tiles);
 	});
-	
+
+	startStatsLogger(Potree, scene);
+
 </script>
 
 </body>

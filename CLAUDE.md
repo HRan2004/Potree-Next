@@ -183,6 +183,20 @@ let octree = await CopcLoader.load("./data.copc.laz");
 
 - 项目使用`bun`作为包管理器，相关命令优先使用`bun`
 
+### 远程执行 (rc)
+
+`rc` 是 bashrc 中定义的远程开发函数，将当前项目同步到远程服务器 `10.176.56.244` 并执行命令。
+
+```bash
+rc                  # 同步项目 + 打开远程交互式 shell
+rc <command>        # 同步项目 + 远程执行指定命令
+rc -c               # 跳过同步，直接打开远程 shell
+rc -c <command>     # 跳过同步，直接远程执行命令
+```
+
+- 远程路径：`/data/disk1/guohaoran/<项目目录名>`
+- 同步基于 rsync，自动排除 `.git/` 及 `.gitignore` 中定义的文件
+
 ### Bug Fix
 
 - 出现问题时，应先彻底分析问题。然后解释Bug出现的的根本原因。最后再提供准确且有针对性的解决方案

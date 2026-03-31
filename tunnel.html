@@ -41,6 +41,7 @@
 	import "range-select";
 	import {proj4} from "./libs/proj4js/proj4-src.js";
 	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	import {startStatsLogger} from "./src/misc/stats-logger.js";
 	// import {GlbVoxelLoader} from "./src/misc/glbvoxels/GlbVoxelLoader.js";
 
 	console.log(proj4.version);
@@ -86,7 +87,7 @@
 	Potree.settings.hqsEnabled      = true;
 	Potree.settings.pointBudget     = 8_000_000;
 	Potree.settings.attribute       = "rgba";
-	Potree.settings.pointSize       = 3;
+	Potree.settings.pointSize       = 4;
 	Potree.settings.minNodeSize     = 200;
 	Potree.settings.splatScale      = 0.002;
 	Potree.settings.showBoundingBox = false;
@@ -100,13 +101,15 @@
 		document.getElementById("msg_resources").innerText = report;
 	});
 
-	PotreeLoader.load("./resources/tunnel/potree/metadata.json").then(pointcloud => {
+	PotreeLoader.load("http://localhost:17420/TunnelDemo/potree/metadata.json").then(pointcloud => {
 		pointcloud.name = "Tunnel";
 
 		scene.root.children.push(pointcloud);
 	});
 
 	document.getElementById('canvas').parentElement.style.position = "absolute";
+
+	startStatsLogger(Potree, scene);
 
 </script>
 

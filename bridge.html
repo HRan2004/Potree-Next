@@ -41,6 +41,7 @@
 	import "range-select";
 	import {proj4} from "./libs/proj4js/proj4-src.js";
 	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	import {startStatsLogger} from "./src/misc/stats-logger.js";
 	// import {GlbVoxelLoader} from "./src/misc/glbvoxels/GlbVoxelLoader.js";
 
 	console.log(proj4.version);
@@ -73,8 +74,8 @@
 
 	// default, if not overriden later on
 	controls.set({
-		position: [50, 50, 80],
-		pivot:    [33, 28, 30]
+		position: [450121, 521404, 300],
+		pivot:    [450021, 521304, 50]
 	});
 
 	import {CopcLoader, Image360, Images360, SplatType, GaussianSplats} from "potree";
@@ -85,12 +86,12 @@
 	Potree.settings.hqsEnabled      = true;
 	Potree.settings.pointBudget     = 8_000_000;
 	Potree.settings.attribute       = "rgba";
-	Potree.settings.splatType       = SplatType.QUADS;
 	Potree.settings.pointSize       = 3;
-	Potree.settings.splatScale      = 0.001;
 	Potree.settings.minNodeSize     = 200;
+	Potree.settings.splatScale      = 0.002;
 	Potree.settings.showBoundingBox = false;
-	Potree.settings.clearColor     = { r: 0, g: 0, b: 0, a: 1.0 };
+	Potree.settings.splatType       = SplatType.QUADS;
+	Potree.settings.clearColor     = { r: 1, g: 1, b: 1, a: 1.0 };
 
 
 	Potree.events.onFrameStart(() => {
@@ -99,7 +100,7 @@
 		document.getElementById("msg_resources").innerText = report;
 	});
 
-	PotreeLoader.load("./resources/bridge/potree/metadata.json").then(pointcloud => {
+	PotreeLoader.load("http://10.176.56.244:17420/bridge_convert/potree/metadata.json").then(pointcloud => {
 		pointcloud.name = "Bridge";
 
 		scene.root.children.push(pointcloud);
@@ -107,6 +108,8 @@
 
 
 	document.getElementById('canvas').parentElement.style.position = "absolute";
+
+	startStatsLogger(Potree, scene);
 
 </script>
 

@@ -43,6 +43,7 @@
 	import {proj4} from "proj4";
 	import * as TWEEN from "tween";
 	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	import {startStatsLogger} from "./src/misc/stats-logger.js";
 	import {MAPPINGS} from "./src/modules/attributes/mappings.js";
 
 	console.log(proj4.version);
@@ -96,6 +97,8 @@
 
 		scene.root.children.push(pointcloud);
 	});
+
+	startStatsLogger(Potree, scene);
 
 </script>
 

@@ -94,6 +94,7 @@ canvas{
 	import "range-select";
 	import {proj4} from "./libs/proj4js/proj4-src.js";
 	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	import {startStatsLogger} from "./src/misc/stats-logger.js";
 	// import {GlbVoxelLoader} from "./src/misc/glbvoxels/GlbVoxelLoader.js";
 
 	console.log(proj4.version);
@@ -175,8 +176,9 @@ canvas{
 			pivot:    [85.8, -34.0, -63.8]
 		});
 	});
-	
 
+
+	startStatsLogger(Potree, scene);
 
 </script>
 
