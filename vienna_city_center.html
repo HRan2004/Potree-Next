@@ -95,8 +95,9 @@
 
 
 	// PotreeLoader.load("./resources/pointclouds/wien_innenstadt/metadata.json").then(pointcloud => {
-	PotreeLoader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/wien_innenstadt/metadata.json").then(pointcloud => {
+	// PotreeLoader.load("https://users.cg.tuwien.ac.at/mschuetz/permanent/potree-next/resources/wien_innenstadt/metadata.json").then(pointcloud => {
 	// PotreeLoader.load("https://potree.org/pointclouds/wien_innenstadt_converted/metadata.json").then(pointcloud => {
+	PotreeLoader.load("http://localhost:17420/metadata.json").then(pointcloud => {
 		console.log(pointcloud);
 
 		scene.root.children.push(pointcloud);
@@ -107,11 +108,10 @@
 		let material = pointcloud.material;
 		material.registerMapping(MAPPINGS.ELEVATION);
 
-		controls.set({
-			position: [2767.8, 341104.3, 183.9],
-			pivot:    [3044.4, 341144.2, 17.6]
-		});
+		controls.zoomTo(pointcloud, {zoom: 1.0});
 	});
+
+	// npx 
 
 
 </script>
