@@ -100,7 +100,7 @@
 		document.getElementById("msg_resources").innerText = report;
 	});
 
-	PotreeLoader.load("http://10.176.56.244:17420/bridge_convert/potree/metadata.json").then(pointcloud => {
+	PotreeLoader.load("http://localhost:17420/Bridge/potree/metadata.json").then(pointcloud => {
 		pointcloud.name = "Bridge";
 
 		scene.root.children.push(pointcloud);

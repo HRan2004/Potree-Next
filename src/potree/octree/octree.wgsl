@@ -272,7 +272,7 @@ fn toQuadPos(vertexID : u32, viewPos : vec4<f32>, node : Node) -> vec4<f32>{
 
 	// project spacing into clip space: spacing in view space -> clip offset
 	// proj[0][0] = 2*near/width, proj[1][1] = 2*near/height (perspective)
-	var halfSize = node.spacing * uniforms.splatScale * uniforms.pointSize;
+	var halfSize = uniforms.spacing * uniforms.splatScale * uniforms.pointSize;
 	var clipX = halfSize * uniforms.proj[0][0];
 	var clipY = halfSize * uniforms.proj[1][1];
 

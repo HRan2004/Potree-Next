@@ -159,7 +159,7 @@ canvas{
 		document.getElementById("msg_resources").innerText = report;
 	});
 
-	Potree3Loader.load("./resources/pointclouds/eclepens.potree").then(pointcloud => {
+	Potree3Loader.load("./resources/eclepens.potree").then(pointcloud => {
 		console.log(pointcloud);
 
 		scene.root.children.push(pointcloud);

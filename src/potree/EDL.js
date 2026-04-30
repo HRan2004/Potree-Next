@@ -10,6 +10,7 @@ let vs = `
 		width : f32,
 		height : f32,
 		near : f32,
+		radius : f32,
 	};
 
 	@binding(0) @group(0) var<uniform> uniforms : Uniforms;
@@ -108,7 +109,7 @@ let fs = `
 
 	fn readLinearDepth(offsetX : f32, offsetY : f32, near : f32) -> f32 {
 
-		var fCoord : vec2<f32> = vec2<f32>(fragXY.x + offsetX, fragXY.y + offsetY);
+		var fCoord : vec2<f32> = vec2<f32>(fragXY.x + offsetX * uniforms.radius, fragXY.y + offsetY * uniforms.radius);
 		var iCoord : vec2<i32> = vec2<i32>(fCoord);
 
 		var d : f32 = textureLoad(myDepth, iCoord, 0);
@@ -279,6 +280,7 @@ export function EDL(source, drawstate){
 
 		let size = Potree.settings.pointSize;
 		let window = Math.round((size - 1) / 2);
+		let radius = Math.max(1.5, size * 0.5); // 采样半径跟随点大小
 
 		view.setUint32(0, 5, true);
 		view.setFloat32(4, 0, true);
@@ -286,7 +288,7 @@ export function EDL(source, drawstate){
 		view.setFloat32(12, 1, true);
 		view.setFloat32(16, 1, true);
 		view.setFloat32(20, camera.near, true);
-		view.setInt32(24, window, true);
+		view.setFloat32(24, radius, true); // 使用 radius 替代 window
 		
 		renderer.device.queue.writeBuffer(
 			uniformBuffer, 0,
