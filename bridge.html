@@ -1,0 +1,90 @@
+<html>
+<head>
+<link rel="stylesheet" href="resources/potree.css">
+</head>
+<body style="padding: 0; margin: 0">
+
+<div id="potree" style="width: 100%; height: 100%; position: fixed;">
+	<span style="position: relative; width: 100%; height: 100%; display: flex">
+		<canvas id="canvas" width="800" height="600" style="width: 100%; height: 100%;"></canvas>
+	</span>
+</div>
+
+<script type="importmap">
+{
+	"imports": {
+		"potree":        "./src/Potree.js",
+		"lazperf":       "./libs/laz-perf/laz-perf.js",
+		"toolbar":       "./src/modules/toolbar/toolbar.js",
+		"sidebar":       "./src/modules/sidebar/sidebar.js",
+		"dat.gui":       "./libs/dat.gui/dat.gui.module.js",
+		"BinaryHeap":    "./libs/BinaryHeap/BinaryHeap.js",
+		"tween":         "./libs/tween/tween.esm.js",
+		"range-select":  "./libs/range-select/RangeSelect.js",
+		"json5":         "./libs/json5/json5.js",
+		"proj4":         "./libs/proj4js/proj4-src.js",
+		"radix-sort-esm":   "./libs/webgpu-radix-sort/dist/esm/radix-sort-esm.js"
+	}
+}
+</script>
+
+<script type="module">
+
+	import {Potree} from "potree";
+	import {Vector3, Mesh, Geometry, geometries, Points, PointLight} from "potree";
+	import {WireframeMaterial, TriangleColorMaterial} from "potree";
+	import "range-select";
+	import {proj4} from "./libs/proj4js/proj4-src.js";
+	import {load as loadGLB} from "./src/misc/GLBLoader.js";
+	// import {GlbVoxelLoader} from "./src/misc/glbvoxels/GlbVoxelLoader.js";
+
+	console.log(proj4.version);
+
+	import {installToolbar} from "toolbar";
+	import {installSidebar} from "sidebar";
+
+	let canvas = document.getElementById("canvas");
+	let elPotree = document.getElementById("potree");
+	let potree = await Potree.init(canvas);
+	let {scene, controls} = potree;
+
+	window.Potree = Potree;
+	window.potree = potree;
+	window.Vector3 = Vector3;
+
+	import {CopcLoader, Image360, Images360, SplatType} from "potree";
+	import {PotreeLoader, Potree3Loader} from "potree";
+	import {MAPPINGS} from "./src/modules/attributes/mappings.js";
+	import {PointMeasure} from "potree";
+
+	Potree.settings.edlEnabled      = true;
+	Potree.settings.dilateEnabled   = false;
+	Potree.settings.hqsEnabled      = true;
+	Potree.settings.pointBudget     = 100;
+	Potree.settings.attribute       = "rgba";
+	// Potree.settings.attribute = "intensity";
+	// Potree.settings.splatType       = SplatType.QUADS;
+	Potree.settings.splatType       = SplatType.POINTS;
+	Potree.settings.pointSize       = 2;
+	Potree.settings.minNodeSize     = 200;
+	Potree.settings.showBoundingBox = false;
+
+	PotreeLoader.load("http://localhost:17420/metadata.json").then(pointcloud => {
+	// PotreeLoader.load("http://10.176.56.244:17420/metadata.json").then(pointcloud => {
+		console.log(pointcloud);
+
+		scene.root.children.push(pointcloud);
+
+		let material = pointcloud.material;
+		material.registerMapping(MAPPINGS.ELEVATION);
+
+		controls.zoomTo(pointcloud, {zoom: 1.0});
+	});
+
+	// npx 
+
+
+</script>
+
+</body>
+</html>
